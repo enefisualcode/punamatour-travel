@@ -231,6 +231,13 @@ function bindInteractions(page) {
 }
 
 const page = currentPage();
-document.title = `${{home:'Beranda',packages:'Paket Umrah',detail:'Umrah Tenang',about:'Tentang Kami',gallery:'Galeri',articles:'Artikel',contact:'Kontak'}[page]} — Safar Amanah`;
+document.title = `${{home:'Beranda',packages:'Paket Umrah',detail:'Umrah Tenang',about:'Tentang Kami',gallery:'Galeri',articles:'Artikel',contact:'Kontak'}[page]} — Punama Tour`;
 document.getElementById('app').innerHTML = pages[page]();
+document.querySelectorAll('#app *').forEach(node => {
+  node.childNodes.forEach(child => {
+    if (child.nodeType === Node.TEXT_NODE && child.textContent.includes('Safar Amanah')) {
+      child.textContent = child.textContent.replaceAll('Safar Amanah', 'Punama Tour');
+    }
+  });
+});
 bindInteractions(page);
